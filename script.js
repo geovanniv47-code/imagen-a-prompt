@@ -88,8 +88,7 @@ const response = await fetch('/api/generate', {
             throw new Error(data.error?.message || 'Error en la API de Anthropic');
         }
 
-        const generatedText = data.content[0].text;
-
+        const generatedText = data.result;
         outputBox.innerHTML = `
             <div style="text-align: left; width: 100%;">
                 <div style="background: rgba(65, 105, 225, 0.1); border-left: 4px solid #4169e1; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
