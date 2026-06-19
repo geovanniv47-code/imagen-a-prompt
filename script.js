@@ -72,11 +72,16 @@ document.querySelector('.generate-btn').addEventListener('click', async function
 
     try {
         const systemPrompt = getSystemPrompt(modelName, speedMode);
+        
+        // ⚠️ IMPORTANTE: Reemplaza 'sk-ant-...' con tu API KEY real de Anthropic
+        const apiKey = 'sk-ant-YOUR_API_KEY_HERE'; // ← COLOCA TU API KEY AQUÍ
 
         const response = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'x-api-key': apiKey, // ← HEADER IMPORTANTE QUE FALTABA
+                'anthropic-version': '2023-06-01'
             },
             body: JSON.stringify({
                 model: 'claude-sonnet-4-6',
@@ -93,8 +98,8 @@ document.querySelector('.generate-btn').addEventListener('click', async function
 
         const data = await response.json();
 
-        if (data.error) {
-            throw new Error(data.error.message);
+        if (!response.ok) {
+            throw new Error(data.error?.message || 'Error en la API de Anthropic');
         }
 
         const generatedText = data.content[0].text;
@@ -110,7 +115,7 @@ document.querySelector('.generate-btn').addEventListener('click', async function
                 <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 0.9rem; line-height: 1.6; color: #333; white-space: pre-wrap; word-break: break-word;">
                     ${escapeHtml(generatedText)}
                 </div>
-                <button onclick="copyPrompt()" style="margin-top: 15px; width: 100%; padding: 12px; border: none; border-radius: 10px; background: linear-gradient(135deg, #ff1493, #4169e1); color: white; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1rem;">
+                <button onclick="copyPrompt()" style="margin-top: 15px; width: 100%; padding: 12px; border: none; border-radius: 10px; background: linear-gradient(135deg, #ff1493, #4169e1); color: white; font-weight: 600; cursor: pointer;">
                     📋 Copiar Prompt
                 </button>
             </div>
@@ -119,12 +124,15 @@ document.querySelector('.generate-btn').addEventListener('click', async function
         saveToHistory(input, generatedText, modelName);
 
     } catch (error) {
-        console.error(error);
+        console.error('Error completo:', error);
         outputBox.innerHTML = `
             <div style="text-align: center; padding: 20px;">
                 <p style="color: #ff6b6b; font-weight: 600; margin-bottom: 10px;">❌ Error al generar</p>
                 <p style="color: #888; font-size: 0.9rem;">${error.message}</p>
-                <p style="color: #888; font-size: 0.8rem; margin-top: 10px;">Verifica tu conexión o intenta de nuevo.</p>
+                <p style="color: #888; font-size: 0.8rem; margin-top: 10px;">
+                    💡 Verifica que hayas agregado tu API KEY en el código.<br>
+                    Obtén una en: anthropic.com/account/keys
+                </p>
             </div>
         `;
     }
@@ -207,7 +215,7 @@ document.querySelector('.historial').addEventListener('click', function() {
     let html = '<div style="text-align: left; width: 100%;"><h3 style="margin-bottom: 15px; color: #333;">📜 Historial</h3>';
     history.forEach((item) => {
         html += `
-            <div style="background: rgba(255,255,255,0.4); padding: 12px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;" onclick="document.querySelector('.input-text').value='${item.input.replace(/'/g, "\\'")}'">
+            <div style="background: rgba(255,255,255,0.4); padding: 12px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;" onclick="document.querySelector('.input-text').value='${item.input.replace(/'/g, "\\'")}'; document.querySelector('.input-text').focus();">
                 <p style="font-weight: 600; color: #4169e1; font-size: 0.85rem;">${item.model}</p>
                 <p style="color: #555; font-size: 0.8rem; margin-top: 4px;">${item.input}</p>
                 <p style="color: #888; font-size: 0.7rem; margin-top: 4px;">${item.date}</p>
