@@ -344,7 +344,13 @@ body::before {
 
 @media (max-width: 480px) {
     body {
-        padding: 15px;
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 100%;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
     }
 
     .title-imagen, .title-a, .title-prompt {
@@ -356,6 +362,23 @@ body::before {
     }
 
     .card {
-        padding: 18px;
+        padding: 15px;
+        border-radius: 15px;
     }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .tab {
+        font-size: 0.85rem;
+        padding: 10px 15px;
+    }
+}
+
+/* Asegurar que no haya scroll horizontal */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
 }
