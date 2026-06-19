@@ -73,29 +73,15 @@ document.querySelector('.generate-btn').addEventListener('click', async function
     try {
         const systemPrompt = getSystemPrompt(modelName, speedMode);
         
-        // ⚠️ IMPORTANTE: Reemplaza 'sk-ant-...' con tu API KEY real de Anthropic
-        const apiKey = 'sk-ant-YOUR_API_KEY_HERE'; // ← COLOCA TU API KEY AQUÍ
-
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': apiKey, // ← HEADER IMPORTANTE QUE FALTABA
-                'anthropic-version': '2023-06-01'
-            },
-            body: JSON.stringify({
-                model: 'claude-sonnet-4-6',
-                max_tokens: 1000,
-                system: systemPrompt,
-                messages: [
-                    {
-                        role: 'user',
-                        content: `Descripción del usuario: "${input}"\n\nGenera el prompt profesional:`
-                    }
-                ]
-            })
-        });
-
+const response = await fetch('/api/generate', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    prompt: `Descripción del usuario: "${input}"\n\nGenera el prompt profesional:`,
+    model: modelName,
+    speedMode: speedMode
+  })
+});
         const data = await response.json();
 
         if (!response.ok) {
