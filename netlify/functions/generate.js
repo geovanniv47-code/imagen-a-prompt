@@ -22,7 +22,7 @@ exports.handler = async (event) => {
     const data = await response.json();
     return {
       statusCode: 200,
-      body: JSON.stringify({ result: data.choices[0].message.content })
+     body: JSON.stringify({ result: data.choices?.[0]?.message?.content || JSON.stringify(data) })
     };
 
   } catch (err) {
