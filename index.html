@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Imagen a Prompt by Gissele Geo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title-section">
+            <h1 class="title-imagen">Imagen</h1>
+            <h1 class="title-a">a</h1>
+            <h1 class="title-prompt">Prompt</h1>
+            <p class="by-line">by <span class="giselle">Gissele Geo</span></p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" id="tab-image">
+                <span class="tab-icon">🖼️</span> Image to Prompt
+            </button>
+            <button class="tab" id="tab-text">
+                <span class="tab-icon">T</span> Text to Prompt
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="section">
+                <label class="section-title">Input Text</label>
+                <textarea class="input-text" placeholder="Describe the image you want to generate..."></textarea>
+            </div>
+
+            <div class="section">
+                <label class="section-title">Seleccionar modelo de IA</label>
+                <div class="model-options">
+                    <div class="model-option selected">
+                        <div class="model-name">Prompt general</div>
+                        <div class="model-desc">Prompt genérico para todos los modelos</div>
+                        <div class="check-icon">✓</div>
+                    </div>
+                    <div class="model-option">
+                        <div class="model-name">Nano Banana</div>
+                        <div class="model-desc">Optimized for Nano Banana image generation</div>
+                    </div>
+                    <div class="model-option">
+                        <div class="model-name">Flux</div>
+                        <div class="model-desc">Optimized for state-of-the-art Flux AI models</div>
+                    </div>
+                    <div class="model-option">
+                        <div class="model-name">Midjourney</div>
+                        <div class="model-desc">Adaptado para generación en Midjourney con parámetros específicos</div>
+                    </div>
+                    <div class="model-option">
+                        <div class="model-name">Stable Diffusion</div>
+                        <div class="model-desc">Formateado para modelos Stable Diffusion</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <label class="section-title">Velocidad del Modelo</label>
+                <div class="speed-options">
+                    <div class="speed-option">
+                        <div class="speed-name">Modo Rápido</div>
+                        <div class="speed-desc">Velocidad más rápida, calidad estable</div>
+                    </div>
+                    <div class="speed-option selected">
+                        <div class="speed-name">Modo Avanzado</div>
+                        <div class="speed-desc">Mayor calidad, más detallado</div>
+                        <div class="check-icon">✓</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <label class="section-title">Idioma de salida</label>
+                <p class="idioma-note">Los modelos principales actualmente ofrecen mejor soporte para prompts en inglés.</p>
+                <div class="idioma-select">
+                    <span>Español</span>
+                    <span class="dropdown-icon">⌄</span>
+                </div>
+            </div>
+
+            <button class="generate-btn">
+                <span class="btn-icon">✨</span> Generar Prompt
+            </button>
+
+            <div class="section">
+                <label class="section-title">Prompt generado</label>
+                <div class="output-box">
+                    <p class="output-placeholder">El prompt generado se mostrará en el cuadro de salida al finalizar.</p>
+                </div>
+            </div>
+
+            <div class="historial">
+                <span class="historial-icon">⏱</span> Historial de Prompts
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
