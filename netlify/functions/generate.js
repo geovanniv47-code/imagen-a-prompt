@@ -27,13 +27,13 @@ exports.handler = async (event) => {
         messages: [
                   { 
           role: "user", 
-          content: `Actúa como un optimizador de prompts profesional para IA de imágenes (Stable Diffusion/Midjourney/Seedream/Gemini/Grok/Flux/Qwen). 
-          Toma la siguiente idea del usuario y conviértela en un prompt optimizado únicamente en español. 
+          content: `Actúa como un generador de prompts profesional para IA de imágenes (Stable Diffusion/Midjourney/Seedream/Gemini/Grok/Flux/Qwen). 
+          Toma la siguiente idea del usuario y conviértela en un prompt para que las imágenes se vean 100% reales, el prompt debe de ser únicamente en español. 
           
           REGLAS ESTRICTAS:
           1. NO escribas introducciones, ni explicaciones, ni listas con números, ni conclusiones.
           2. Devuelve SOLO el prompt final en español y su respectivo 'Negative Prompt'.
-          3. Sé conciso y directo usando etiquetas separadas por comas. El resultado total debe ser menor a 400 caracteres.
+          3. Sé conciso y directo usando etiquetas separadas por comas. El resultado total debe ser menor a 1000 caracteres.
           
           Idea del usuario: ${prompt}` 
         }
