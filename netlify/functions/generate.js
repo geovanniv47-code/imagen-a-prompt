@@ -32,7 +32,7 @@ exports.handler = async (event) => {
           
           REGLAS ESTRICTAS:
           1. NO escribas introducciones, ni explicaciones, ni listas con números, ni conclusiones.
-          2. Devuelve SOLO el prompt final en español y su respectivo 'Negative Prompt'.
+          2. AGREGA palabras clave de imperfección fotográfica real, tales como: "raw photo", "candid snapshot", "natural skin texture with visible pores and imperfections", "shot on 35mm film", "amateur photography", "subtle skin texture", "natural non-directional lighting".
           3. Sé conciso y directo usando etiquetas separadas por comas. El resultado total debe ser menor a 2500 caracteres.
           
           Idea del usuario: ${prompt}` 
