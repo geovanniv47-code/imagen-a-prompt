@@ -33,7 +33,7 @@ exports.handler = async (event) => {
           REGLAS ESTRICTAS:
           1. NO escribas introducciones, ni explicaciones, ni listas con números, ni conclusiones.
           2. Devuelve SOLO el prompt final en español y su respectivo 'Negative Prompt'.
-          3. Sé conciso y directo usando etiquetas separadas por comas. El resultado total debe ser menor a 1000 caracteres.
+          3. Sé conciso y directo usando etiquetas separadas por comas. El resultado total debe ser menor a 2500 caracteres.
           
           Idea del usuario: ${prompt}` 
         }
