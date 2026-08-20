@@ -21,7 +21,7 @@ exports.handler = async (event) => {
         "Authorization": `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "qwen/qwen3.6-27b", // Cambia a "openai/gpt-oss-20b" si quieres más barato
+        model: "openai/gpt-oss-20b", // Cambia a "" si quieres más barato
         max_tokens: 1000,
         temperature: 0.7,
         messages: [
