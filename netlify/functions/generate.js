@@ -23,9 +23,15 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         model: "openai/gpt-oss-120b",
         max_tokens: 1000,
-        messages: [{ role: "user", content: prompt }]
+        temperature: 0.7,
+        messages: [
+          { 
+            role: "user", 
+            content: `Actúa como un generador de prompts experto. Crea un prompt optimizado basado en la siguiente idea: ${prompt}` 
+          }
+        ]
       })
-    });
+    }); // <--- ¡Esta es la línea que faltaba cerrar!
 
     const data = await response.json();
     const result = data.choices?.[0]?.message?.content || JSON.stringify(data);
