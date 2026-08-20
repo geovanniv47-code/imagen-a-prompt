@@ -37,7 +37,7 @@ REGLAS OBLIGATORIAS:
 - Incluye siempre: natural skin texture with visible pores, subtle imperfections, candid snapshot, raw photo, shot on 35mm film, natural lighting.
 - Responde ÚNICAMENTE con el prompt final. Nada de introducciones, explicaciones, listas ni conclusiones.
 - Usa estilo de etiquetas separadas por comas.
-- Máximo 2500 caracteres.
+- El resultado debe de ser igual o menor a 2500 caracteres.
 
 Idea del usuario: ${prompt}` 
           }
